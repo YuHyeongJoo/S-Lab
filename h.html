@@ -1,47 +1,105 @@
-<pre>/* <span style="color: gray;">CallingMethodsInSameClass</span><span style="color: gray;">.</span><span style="color: gray;">java</span><span style="color: gray;">
-</span></pre>
-<pre><span style="color: gray;"> *
-</span></pre>
-<pre><span style="color: gray;"> * </span><span style="color: gray;">illustrates</span><span style="color: gray;"> </span><span style="color: gray;">how</span><span style="color: gray;"> </span><span style="color: gray;">to</span><span style="color: gray;"> </span><span style="color: gray;">call</span><span style="color: gray;"> </span><span style="color: gray;">static</span><span style="color: gray;"> </span><span style="color: gray;">methods</span><span style="color: gray;"> </span><span style="color: gray;">a</span><span style="color: gray;"> </span><span style="color: gray;">class</span><span style="color: gray;">
-</span></pre>
-<pre><span style="color: gray;"> * </span><span style="color: gray;">from</span><span style="color: gray;"> </span><span style="color: gray;">a</span><span style="color: gray;"> </span><span style="color: gray;">method</span><span style="color: gray;"> </span><span style="color: gray;">in</span><span style="color: gray;"> </span><span style="color: gray;">the</span><span style="color: gray;"> </span><span style="color: gray;">same</span><span style="color: gray;"> </span><span style="color: gray;">class</span><span style="color: gray;">
-</span></pre>
-<pre><span style="color: gray;"> */
-</span></pre>
-<pre>
-</pre>
-<pre><span style="color: red;">public</span> <span style="color: green;">class</span> <span style="color: blue;">CallingMethodsInSameClass</span>
+<pre><span style="color: red;">public</span> <span style="color: green;">class</span> <span style="color: blue;">EnhancedFor</span>
 </pre>
 <pre>{
 </pre>
-<pre>	<span style="color: red;">public</span> <span style="color: red;">static</span> <span style="color: green;">void</span> <span style="color: blue;">main</span>(<span style="color: green;">String</span>[] <span style="color: blue;">args</span>) {
+<pre>	<span style="color: red;">public</span> <span style="color: red;">static</span> <span style="color: green;">void</span> <span style="color: blue;">main</span>(<span style="color: green;">String</span>[] <span style="color: blue;">args</span>)
 </pre>
-<pre>		printOne();
+<pre>	{	<span style="color: green;">int</span>[] <span style="color: blue;">list</span> ={<span style="color: blue;">1</span>, <span style="color: blue;">2</span>, <span style="color: blue;">3</span>, <span style="color: blue;">4</span>, <span style="color: blue;">5</span>, <span style="color: blue;">6</span>, <span style="color: blue;">7</span>, <span style="color: blue;">8</span>, <span style="color: blue;">9</span>, <span style="color: blue;">10</span>};
 </pre>
-<pre>		printOne();
+<pre>		<span style="color: green;">int</span> <span style="color: blue;">sum</span> = sumListEnhanced(list);
 </pre>
-<pre>		printTwo();
+<pre>		System.out.println("<span style="color: red;">Sum</span> of elements in list: " + <span style="color: red;">sum</span>);
+</pre>
+<pre>
+</pre>
+<pre>		System.out.println("<span style="color: red;">Original</span> List");
+</pre>
+<pre><span style="color: red;">		</span>printList(list);
+</pre>
+<pre>		System.out.println("<span style="color: red;">Calling</span> addOne");
+</pre>
+<pre><span style="color: red;">		</span>addOne(list);
+</pre>
+<pre>		System.out.println("<span style="color: red;">List</span> after call to addOne");
+</pre>
+<pre><span style="color: red;">		</span>printList(list);
+</pre>
+<pre>		System.out.println("<span style="color: red;">Calling</span> addOneError");
+</pre>
+<pre><span style="color: red;">		</span>addOneError(list);
+</pre>
+<pre>		System.out.println("<span style="color: red;">List</span> after call to addOneError. Note elements of list did not change.");
+</pre>
+<pre><span style="color: red;">		</span>printList(list);
 </pre>
 <pre>	}
 </pre>
 <pre>
 </pre>
-<pre>	<span style="color: red;">public</span> <span style="color: red;">static</span> <span style="color: green;">void</span> <span style="color: blue;">printOne</span>() {
-</pre>
-<pre>		System.out.println("<span style="color: red;">Hello</span> World");
-</pre>
-<pre><span style="color: red;">	}
+<pre><span style="color: gray;">	// </span><span style="color: gray;">pre</span><span style="color: gray;">: </span><span style="color: gray;">list</span><span style="color: gray;"> != </span><span style="color: gray;">null</span><span style="color: gray;">
 </span></pre>
-<pre>
+<pre><span style="color: gray;">	// </span><span style="color: gray;">post</span><span style="color: gray;">: </span><span style="color: gray;">return</span><span style="color: gray;"> </span><span style="color: gray;">sum</span><span style="color: gray;"> </span><span style="color: gray;">of</span><span style="color: gray;"> </span><span style="color: gray;">elements</span><span style="color: gray;">
+</span></pre>
+<pre><span style="color: gray;">	// </span><span style="color: gray;">uses</span><span style="color: gray;"> </span><span style="color: gray;">enhanced</span><span style="color: gray;"> </span><span style="color: gray;">for</span><span style="color: gray;"> </span><span style="color: gray;">loop</span><span style="color: gray;">
+</span></pre>
+<pre>	<span style="color: red;">public</span> <span style="color: red;">static</span> <span style="color: green;">int</span> <span style="color: blue;">sumListEnhanced</span>(<span style="color: green;">int</span>[] <span style="color: blue;">list</span>)
 </pre>
-<pre>	<span style="color: red;">public</span> <span style="color: red;">static</span> <span style="color: green;">void</span> <span style="color: blue;">printTwo</span>() {
+<pre>	{	<span style="color: green;">int</span> <span style="color: blue;">total</span> = <span style="color: blue;">0</span>;
 </pre>
-<pre>		printOne();
+<pre>		<span style="color: red;">for</span>(<span style="color: green;">int</span> <span style="color: blue;">val</span> : list)
 </pre>
-<pre>		printOne();
+<pre>		{	total += val;
+</pre>
+<pre>		}
+</pre>
+<pre>		<span style="color: red;">return</span> total;
 </pre>
 <pre>	}
 </pre>
-<pre>}
+<pre>
+</pre>
+<pre><span style="color: gray;">	// </span><span style="color: gray;">pre</span><span style="color: gray;">: </span><span style="color: gray;">list</span><span style="color: gray;"> != </span><span style="color: gray;">null</span><span style="color: gray;">
+</span></pre>
+<pre><span style="color: gray;">	// </span><span style="color: gray;">post</span><span style="color: gray;">: </span><span style="color: gray;">return</span><span style="color: gray;"> </span><span style="color: gray;">sum</span><span style="color: gray;"> </span><span style="color: gray;">of</span><span style="color: gray;"> </span><span style="color: gray;">elements</span><span style="color: gray;">
+</span></pre>
+<pre><span style="color: gray;">	// </span><span style="color: gray;">use</span><span style="color: gray;"> </span><span style="color: gray;">traditional</span><span style="color: gray;"> </span><span style="color: gray;">for</span><span style="color: gray;"> </span><span style="color: gray;">loop</span><span style="color: gray;">
+</span></pre>
+<pre>	<span style="color: red;">public</span> <span style="color: red;">static</span> <span style="color: green;">int</span> <span style="color: blue;">sumListOld</span>(<span style="color: green;">int</span>[] <span style="color: blue;">list</span>)
+</pre>
+<pre>	{	<span style="color: green;">int</span> <span style="color: blue;">total</span> = <span style="color: blue;">0</span>;
+</pre>
+<pre>		<span style="color: red;">for</span>(<span style="color: green;">int</span> <span style="color: blue;">i</span> = <span style="color: blue;">0</span>; i < list.length; i++)
+</pre>
+<pre>		{	total += list[i];
+</pre>
+<pre>			System.out.println( list[i] );
+</pre>
+<pre>		}
+</pre>
+<pre>		<span style="color: red;">return</span> total;
+</pre>
+<pre>	}
 </pre>
 <pre>
+</pre>
+<pre><span style="color: gray;">	// </span><span style="color: gray;">pre</span><span style="color: gray;">: </span><span style="color: gray;">list</span><span style="color: gray;"> != </span><span style="color: gray;">null</span><span style="color: gray;">
+</span></pre>
+<pre><span style="color: gray;">	// </span><span style="color: gray;">post</span><span style="color: gray;">: </span><span style="color: gray;">none</span><span style="color: gray;">.
+</span></pre>
+<pre><span style="color: gray;">	// </span><span style="color: gray;">The</span><span style="color: gray;"> </span><span style="color: gray;">code</span><span style="color: gray;"> </span><span style="color: gray;">appears</span><span style="color: gray;"> </span><span style="color: gray;">to</span><span style="color: gray;"> </span><span style="color: gray;">add</span><span style="color: gray;"> </span><span style="color: gray;">one</span><span style="color: gray;"> </span><span style="color: gray;">to</span><span style="color: gray;"> </span><span style="color: gray;">every</span><span style="color: gray;"> </span><span style="color: gray;">element</span><span style="color: gray;"> </span><span style="color: gray;">in</span><span style="color: gray;"> </span><span style="color: gray;">the</span><span style="color: gray;"> </span><span style="color: gray;">list</span><span style="color: gray;">, </span><span style="color: gray;">but</span><span style="color: gray;"> </span><span style="color: gray;">does</span><span style="color: gray;"> </span><span style="color: gray;">not</span><span style="color: gray;">
+</span></pre>
+<pre>	<span style="color: red;">public</span> <span style="color: red;">static</span> <span style="color: green;">void</span> <span style="color: blue;">addOneError</span>(<span style="color: green;">int</span>[] <span style="color: blue;">list</span>)
+</pre>
+<pre>	{	<span style="color: red;">for</span>(<span style="color: green;">int</span> <span style="color: blue;">val</span> : list)
+</pre>
+<pre>		{	val = val + <span style="color: blue;">1</span>;
+</pre>
+<pre>		}
+</pre>
+<pre>	}
+</pre>
+<pre>
+</pre>
+<pre><span style="color: gray;">	// </span><span style="color: gray;">pre</span><span style="color: gray;">: </span><span style="color: gray;">list</span><span style="color: gray;"> != </span><span style="color: gray;">null</span><span style="color: gray;">
+</span></pre>
+<pre><span style="color: gray;">	// </span><span style="color: gray;">post</span><span style="color: gray;">: </span><span style="color: gray;">adds</span><span style="color: gray;"> </span><span style="color: gray;">one</span><span style="color: gray;"> </span><span style="color: gray;">to</span><span style="c
