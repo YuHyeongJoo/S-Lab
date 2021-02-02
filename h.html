@@ -1,0 +1,47 @@
+<pre>/* <span style="color: gray;">CallingMethodsInSameClass</span><span style="color: gray;">.</span><span style="color: gray;">java</span><span style="color: gray;">
+</span></pre>
+<pre><span style="color: gray;"> *
+</span></pre>
+<pre><span style="color: gray;"> * </span><span style="color: gray;">illustrates</span><span style="color: gray;"> </span><span style="color: gray;">how</span><span style="color: gray;"> </span><span style="color: gray;">to</span><span style="color: gray;"> </span><span style="color: gray;">call</span><span style="color: gray;"> </span><span style="color: gray;">static</span><span style="color: gray;"> </span><span style="color: gray;">methods</span><span style="color: gray;"> </span><span style="color: gray;">a</span><span style="color: gray;"> </span><span style="color: gray;">class</span><span style="color: gray;">
+</span></pre>
+<pre><span style="color: gray;"> * </span><span style="color: gray;">from</span><span style="color: gray;"> </span><span style="color: gray;">a</span><span style="color: gray;"> </span><span style="color: gray;">method</span><span style="color: gray;"> </span><span style="color: gray;">in</span><span style="color: gray;"> </span><span style="color: gray;">the</span><span style="color: gray;"> </span><span style="color: gray;">same</span><span style="color: gray;"> </span><span style="color: gray;">class</span><span style="color: gray;">
+</span></pre>
+<pre><span style="color: gray;"> */
+</span></pre>
+<pre>
+</pre>
+<pre><span style="color: red;">public</span> <span style="color: green;">class</span> <span style="color: blue;">CallingMethodsInSameClass</span>
+</pre>
+<pre>{
+</pre>
+<pre>	<span style="color: red;">public</span> <span style="color: red;">static</span> <span style="color: green;">void</span> <span style="color: blue;">main</span>(<span style="color: green;">String</span>[] <span style="color: blue;">args</span>) {
+</pre>
+<pre>		printOne();
+</pre>
+<pre>		printOne();
+</pre>
+<pre>		printTwo();
+</pre>
+<pre>	}
+</pre>
+<pre>
+</pre>
+<pre>	<span style="color: red;">public</span> <span style="color: red;">static</span> <span style="color: green;">void</span> <span style="color: blue;">printOne</span>() {
+</pre>
+<pre>		System.out.println("<span style="color: red;">Hello</span> World");
+</pre>
+<pre><span style="color: red;">	}
+</span></pre>
+<pre>
+</pre>
+<pre>	<span style="color: red;">public</span> <span style="color: red;">static</span> <span style="color: green;">void</span> <span style="color: blue;">printTwo</span>() {
+</pre>
+<pre>		printOne();
+</pre>
+<pre>		printOne();
+</pre>
+<pre>	}
+</pre>
+<pre>}
+</pre>
+<pre>
